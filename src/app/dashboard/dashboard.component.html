@@ -1,12 +1,29 @@
 <h3>Current stock</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let dress of dresses" class="col-1-4"
-      routerLink="/detail/{{dress.id}}">
+  <div class="col-1-4">
+  <a *ngFor="let dress of dresses"  [class.selected]="dress === selectedDress"
+    (click)="onSelect(dress)">
+   <div class="col-1-12">
+  <!--    routerLink="/detail/{{dress.id}}"> -->
     <div class="module hero">
-      <h4>{{dress.name}}</h4>
+      <h4>{{dress.name}}</h4> 
+    </div>
     </div>
   </a>
 </div>
 <!--
 <app-dress-search></app-dress-search>
+
+<ul class="dresses">
+  <li *ngFor="let dress of dresses"
+  
+ [class.selected]="dress === selectedDress"
+    (click)="onSelect(dress)">
+    <span class="badge">{{dress.id}}</span> {{dress.name}}
+  </li>
+</ul>
 -->
+<div class="col-1-6">
+<app-dress-details [dress]="selectedDress"></app-dress-details>
+</div>
+</div>

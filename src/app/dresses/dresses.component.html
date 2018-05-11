@@ -1,6 +1,6 @@
 <h2>Summer Dresses</h2>
-
-<div>
+<div class="grid grid-pad">
+<div class="col-1-2">
   <label>Dress name:
     <input #dressName />
   </label>
@@ -8,14 +8,19 @@
   <button (click)="add(dressName.value); dressName.value=''">
     add
   </button>
-</div>
-
-<ul class="heroes">
-  <li *ngFor="let dress of dresses">
-    <a routerLink="/detail/{{dress?.id}}">
+<div class="col-1-2" style="display:flex">  
+<ul class="dresses">
+  <li *ngFor="let dress of dresses" [class.selected]="dress === selectedDress"
+    (click)="onSelect(dress)">
+    <!-- routerLink="/detail/{{dress?.id}}" -->
+    <a >
       <span class="badge">{{dress?.id}}</span> {{dress?.name}}
     </a>
     <button class="delete" title="delete dress"
     (click)="delete(dress)">x</button>
   </li>
 </ul>
+<app-dress-details [dress]="selectedDress"></app-dress-details>
+</div>
+</div>
+</div>
